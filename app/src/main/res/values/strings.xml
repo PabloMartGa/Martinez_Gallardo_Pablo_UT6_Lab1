@@ -1,3 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Ejercicio01_UT6</string>
+    <string name="app_name">La Forja del Servidor</string>
+    <string name="titulo_selector">Puesto de transmisión</string>
+    <string name="estado_inicial">Esperando selección de canal…</string>
+    <string name="estado_cargando">Cargando Búfer...</string>
+    <string name="estado_en_vivo">Transmitiendo en vivo</string>
+    <string name="estado_terminada">Conexión terminada</string>
 </resources>

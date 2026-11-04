@@ -1,90 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://android.com"
-    xmlns:tools="http://android.com"
-    xmlns:tools2="http://schemas.android.com/tools"
+<!--
+    Pantalla de mando, en vertical y de arriba abajo:
+      1) Spinner  -> elegir el canal (cabecera)
+      2) PlayerView -> el vídeo, ocupando todo el hueco que sobre en medio
+      3) TextView -> el estado de la conexión (zona inferior)
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:padding="24dp"
-    android:background="#1E1E1E"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <!-- Botón de la Práctica 1 (Activo) -->
+    <!-- Cabecera: selector desplegable de canales -->
+    <Spinner
+        android:id="@+id/spinnerCanales"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:contentDescription="@string/titulo_selector" />
 
-    <!-- Botón del Laboratorio (Desactivado visualmente para evitar crasheos) -->
+    <!-- Zona central: aquí se pinta el vídeo -->
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/playerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        app:resize_mode="fit"
+        app:show_buffering="never" />
 
+    <!-- Zona inferior: texto de estado que cambia según lo que diga el reproductor -->
     <TextView
-        android:id="@+id/tvMenuUT6"
-        android:layout_width="303dp"
-        android:layout_height="129dp"
+        android:id="@+id/textoEstado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="2627 - IAX - Prg. MDM\nUT6: Gestión Multimedia"
-        android:textColor="#FFFFFF"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/btnIrAudio"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools2:layout_editor_absoluteX="32dp"
-        tools2:layout_editor_absoluteY="70dp" />
+        android:text="@string/estado_inicial"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnIrAudio"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#8E44AD"
-        android:text="Práctica: El Laúd de Finrod"
-        app:layout_constraintBottom_toTopOf="@id/btnIrCampanas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvMenuUT6"
-        tools2:layout_editor_absoluteX="67dp"
-        tools2:layout_editor_absoluteY="273dp" />
-
-    <Button
-        android:id="@+id/btnIrCampanas"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#912f3A"
-        android:enabled="false"
-        android:text="Laboratorio: Alarma de Gondor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnIrAudio"
-        tools2:layout_editor_absoluteX="67dp"
-        tools2:layout_editor_absoluteY="357dp" />
-
-    <Button
-        android:id="@+id/btnIrVideo"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#7F8C8D"
-        android:enabled="false"
-        android:text="Laboratorio: Video"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnIrCampanas"
-        tools2:layout_editor_absoluteX="69dp"
-        tools2:layout_editor_absoluteY="444dp" />
-
-    <Button
-        android:id="@+id/btnIrWeb"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#7F8C8D"
-        android:enabled="false"
-        android:text="Laboratorio: Web"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnIrVideo"
-        tools2:layout_editor_absoluteX="71dp"
-        tools2:layout_editor_absoluteY="520dp" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
